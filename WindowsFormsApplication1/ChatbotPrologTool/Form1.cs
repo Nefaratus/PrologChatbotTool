@@ -32,6 +32,7 @@ namespace WindowsFormsApplication1
 
         public string checkCapital(string text)
         {
+            char[] marks = {'.'};
             string test = "'";
             //if (string.IsNullOrWhiteSpace(text))
              //  return "";
@@ -41,7 +42,7 @@ namespace WindowsFormsApplication1
             {
                 if (i < words.Length - 1)
                 {
-                    if (words[i].Any(char.IsUpper))
+                    if ((words[i].Any(char.IsUpper) || words[i].Any(char.IsPunctuation)) && !words[i].Contains("star"))
                     {
                         newText.Append(test + words[i] + test + ",");
                     }
@@ -51,7 +52,7 @@ namespace WindowsFormsApplication1
                     }
                 }
                 else
-                    if (words[i].Any(char.IsUpper))
+                    if ((words[i].Any(char.IsUpper) || words[i].Any(char.IsPunctuation)) && !words[i].Contains("star"))
                     {
                         newText.Append(test + words[i] + test);
                     }
